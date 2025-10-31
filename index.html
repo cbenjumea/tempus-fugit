@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempus Fugit - El tiempo vuela</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1 class="logo">TEMPUS FUGIT</h1>
+
+        <!-- Barra de progreso -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Fecha y días restantes -->
+        <div class="header-info">
+            <p class="current-date" id="currentDate"></p>
+            <p class="days-remaining">
+                <span id="daysRemaining">0</span> días restantes
+            </p>
+        </div>
+
+        <!-- Porcentaje -->
+        <div class="year-progress">
+            <div class="percentage" id="yearPercentage">0%</div>
+            <p class="subtitle">del año <span id="currentYear">2025</span> completado</p>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- PARTE IZQUIERDA: Wake Me Up -->
+        <section class="wake-me-up">
+            <button class="wake-btn" id="wakeBtn">Wake Me Up</button>
+            <div class="quote-container" id="quoteContainer">
+                <p class="quote-text" id="quoteText"></p>
+                <p class="quote-author" id="quoteAuthor"></p>
+            </div>
+        </section>
+
+        <!-- PARTE DERECHA: Bucket List -->
+        <section class="bucket-list">
+            <h2>Bucket List 2025</h2>
+
+            <div class="add-item">
+                <input
+                    type="text"
+                    id="bucketInput"
+                    placeholder="¿Qué quieres lograr este año?"
+                    maxlength="100"
+                >
+                <button class="add-btn" id="addBtn">
+                    <span class="btn-icon">+</span>
+                    <span class="btn-text">Añadir</span>
+                </button>
+            </div>
+
+            <div class="counter" id="counter">
+                <span id="completedCount">0</span> / <span id="totalCount">0</span> completados
+            </div>
+
+            <ul class="bucket-items" id="bucketList">
+                <!-- Items se agregarán dinámicamente -->
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
