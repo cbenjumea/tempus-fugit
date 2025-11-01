@@ -1,112 +1,112 @@
 // ============================
-// FRASES MOTIVACIONALES
+// MOTIVATIONAL QUOTES
 // ============================
 
 const quotes = [
     {
-        text: "Tu tiempo es limitado, no lo desperdicies viviendo la vida de alguien más.",
+        text: "Your time is limited, don't waste it living someone else's life.",
         author: "Steve Jobs"
     },
     {
-        text: "La vida es lo que pasa mientras estás ocupado haciendo otros planes.",
+        text: "Life is what happens when you're busy making other plans.",
         author: "John Lennon"
     },
     {
-        text: "La única forma de hacer un gran trabajo es amar lo que haces.",
+        text: "The only way to do great work is to love what you do.",
         author: "Steve Jobs"
     },
     {
-        text: "No cuentes los días, haz que los días cuenten.",
+        text: "Don't count the days, make the days count.",
         author: "Muhammad Ali"
     },
     {
-        text: "El futuro pertenece a quienes creen en la belleza de sus sueños.",
+        text: "The future belongs to those who believe in the beauty of their dreams.",
         author: "Eleanor Roosevelt"
     },
     {
-        text: "La imaginación es más importante que el conocimiento.",
+        text: "Imagination is more important than knowledge.",
         author: "Albert Einstein"
     },
     {
-        text: "La vida es como montar en bicicleta. Para mantener el equilibrio, debes seguir adelante.",
+        text: "Life is like riding a bicycle. To keep your balance, you must keep moving.",
         author: "Albert Einstein"
     },
     {
-        text: "El éxito es ir de fracaso en fracaso sin perder el entusiasmo.",
+        text: "Success is going from failure to failure without losing your enthusiasm.",
         author: "Winston Churchill"
     },
     {
-        text: "La mejor forma de predecir el futuro es crearlo.",
+        text: "The best way to predict the future is to create it.",
         author: "Peter Drucker"
     },
     {
-        text: "El único modo de hacer un gran trabajo es amar lo que haces.",
+        text: "The only way to do great work is to love what you do.",
         author: "Steve Jobs"
     },
     {
-        text: "No esperes. Nunca habrá un momento perfecto.",
+        text: "Don't wait. There will never be a perfect time.",
         author: "Napoleon Hill"
     },
     {
-        text: "La vida es 10% lo que te sucede y 90% cómo reaccionas ante ello.",
+        text: "Life is 10% what happens to you and 90% how you react to it.",
         author: "Charles R. Swindoll"
     },
     {
-        text: "El propósito de nuestras vidas es ser felices.",
+        text: "The purpose of our lives is to be happy.",
         author: "Dalai Lama"
     },
     {
-        text: "Vivir es nacer a cada instante.",
+        text: "To live is to be born at every instant.",
         author: "Erich Fromm"
     },
     {
-        text: "El tiempo es más valioso que el dinero. Puedes obtener más dinero, pero no puedes obtener más tiempo.",
+        text: "Time is more valuable than money. You can get more money, but you cannot get more time.",
         author: "Jim Rohn"
     },
     {
-        text: "No dejes que el ayer use demasiado del hoy.",
+        text: "Don't let yesterday take up too much of today.",
         author: "Will Rogers"
     },
     {
-        text: "El secreto de salir adelante es comenzar.",
+        text: "The secret of getting ahead is getting started.",
         author: "Mark Twain"
     },
     {
-        text: "Los años te enseñan muchas cosas que los días nunca conocieron.",
+        text: "The years teach much which the days never knew.",
         author: "Ralph Waldo Emerson"
     },
     {
-        text: "La vida es realmente simple, pero insistimos en hacerla complicada.",
-        author: "Confucio"
+        text: "Life is really simple, but we insist on making it complicated.",
+        author: "Confucius"
     },
     {
-        text: "El tiempo es el más sabio de los consejeros.",
-        author: "Plutarco"
+        text: "Time is the wisest counselor of all.",
+        author: "Plutarch"
     },
     {
-        text: "Cada momento es una oportunidad para volver a empezar.",
+        text: "Every moment is a fresh beginning.",
         author: "Oprah Winfrey"
     },
     {
-        text: "El tiempo vuela. Es tu responsabilidad ser el piloto.",
+        text: "Time flies. It's up to you to be the navigator.",
         author: "Michael Altshuler"
     },
     {
-        text: "No hay nada permanente excepto el cambio.",
-        author: "Heráclito"
+        text: "There is nothing permanent except change.",
+        author: "Heraclitus"
     },
     {
-        text: "La acción es la llave fundamental de todo éxito.",
+        text: "Action is the foundational key to all success.",
         author: "Pablo Picasso"
     },
     {
-        text: "El momento más importante es ahora.",
-        author: "Buda"
+        text: "The most important moment is now.",
+        author: "Buddha"
     }
 ];
 
 // ============================
-// ELEMENTOS DEL DOM
+// DOM ELEMENTS
 // ============================
 
 const yearPercentageEl = document.getElementById('yearPercentage');
@@ -124,30 +124,45 @@ const bucketListEl = document.getElementById('bucketList');
 const completedCountEl = document.getElementById('completedCount');
 const totalCountEl = document.getElementById('totalCount');
 
+// Auth elements
+const loginPageEl = document.getElementById('loginPage');
+const mainAppEl = document.getElementById('mainApp');
+const loginBtnEl = document.getElementById('loginBtn');
+const logoutBtnEl = document.getElementById('logoutBtn');
+const userInfoEl = document.getElementById('userInfo');
+const userIconEl = document.getElementById('userIcon');
+const userNameEl = document.getElementById('userName');
+
 // ============================
-// FUNCIONES DE FECHA Y PROGRESO
+// GLOBAL STATE
+// ============================
+
+let currentUser = null;
+
+// ============================
+// DATE AND PROGRESS FUNCTIONS
 // ============================
 
 /**
- * Calcula el porcentaje del año transcurrido
+ * Calculates the percentage of the year that has passed
  */
 function calculateYearProgress() {
     const now = new Date();
     const year = now.getFullYear();
 
-    // Inicio del año
+    // Start of year
     const startOfYear = new Date(year, 0, 1);
 
-    // Fin del año
+    // End of year
     const endOfYear = new Date(year + 1, 0, 1);
 
-    // Tiempo transcurrido desde el inicio del año
+    // Time elapsed since start of year
     const elapsed = now - startOfYear;
 
-    // Duración total del año
+    // Total duration of year
     const total = endOfYear - startOfYear;
 
-    // Porcentaje
+    // Percentage
     const percentage = (elapsed / total) * 100;
 
     return {
@@ -158,18 +173,18 @@ function calculateYearProgress() {
 }
 
 /**
- * Actualiza la información del año en la UI
+ * Updates year information in the UI
  */
 function updateYearInfo() {
     const progress = calculateYearProgress();
 
-    // Actualizar porcentaje
+    // Update percentage
     yearPercentageEl.textContent = `${Math.floor(progress.percentage)}%`;
 
-    // Actualizar año actual
+    // Update current year
     currentYearEl.textContent = progress.year;
 
-    // Actualizar fecha actual
+    // Update current date
     const now = new Date();
     const options = {
         weekday: 'long',
@@ -177,21 +192,21 @@ function updateYearInfo() {
         month: 'long',
         day: 'numeric'
     };
-    currentDateEl.textContent = now.toLocaleDateString('es-ES', options);
+    currentDateEl.textContent = now.toLocaleDateString('en-US', options);
 
-    // Actualizar días restantes
+    // Update days remaining
     daysRemainingEl.textContent = progress.daysRemaining;
 
-    // Actualizar barra de progreso
+    // Update progress bar
     progressBarEl.style.width = `${progress.percentage}%`;
 }
 
 // ============================
-// FUNCIONES DE FRASES MOTIVACIONALES
+// MOTIVATIONAL QUOTES FUNCTIONS
 // ============================
 
 /**
- * Obtiene una frase aleatoria
+ * Gets a random quote
  */
 function getRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
@@ -199,7 +214,7 @@ function getRandomQuote() {
 }
 
 /**
- * Muestra una frase motivacional
+ * Shows a motivational quote
  */
 function showQuote() {
     const quote = getRandomQuote();
@@ -207,7 +222,7 @@ function showQuote() {
     // Fade out
     quoteContainerEl.classList.remove('show');
 
-    // Cambiar contenido después de la animación
+    // Change content after animation
     setTimeout(() => {
         quoteTextEl.textContent = `"${quote.text}"`;
         quoteAuthorEl.textContent = quote.author;
@@ -218,27 +233,99 @@ function showQuote() {
 }
 
 // ============================
-// FUNCIONES DE BUCKET LIST
+// AUTHENTICATION FUNCTIONS
 // ============================
 
 /**
- * Carga los items del localStorage
+ * Sign in with Google
  */
-function loadBucketList() {
-    const items = JSON.parse(localStorage.getItem('bucketList')) || [];
+async function signInWithGoogle() {
+    try {
+        await auth.signInWithPopup(googleProvider);
+    } catch (error) {
+        console.error('Error signing in:', error);
+        alert('Error signing in. Please try again.');
+    }
+}
+
+/**
+ * Sign out
+ */
+async function signOut() {
+    try {
+        await auth.signOut();
+    } catch (error) {
+        console.error('Error signing out:', error);
+        alert('Error signing out. Please try again.');
+    }
+}
+
+/**
+ * Update UI based on auth state
+ */
+function updateAuthUI(user) {
+    if (user) {
+        // User is signed in - show main app, hide login page
+        currentUser = user;
+        loginPageEl.style.display = 'none';
+        mainAppEl.style.display = 'flex';
+        userNameEl.textContent = user.displayName || user.email;
+    } else {
+        // User is signed out - show login page, hide main app
+        currentUser = null;
+        loginPageEl.style.display = 'flex';
+        mainAppEl.style.display = 'none';
+    }
+}
+
+// ============================
+// BUCKET LIST FUNCTIONS
+// ============================
+
+/**
+ * Loads items from Firestore or localStorage
+ */
+async function loadBucketList() {
     bucketListEl.innerHTML = '';
 
-    items.forEach((item, index) => {
-        createBucketItem(item.text, item.completed, index);
-    });
+    if (currentUser) {
+        // Load from Firestore
+        try {
+            const docRef = db.collection('users').doc(currentUser.uid);
+            const doc = await docRef.get();
+
+            if (doc.exists) {
+                const items = doc.data().bucketList || [];
+                items.forEach((item, index) => {
+                    createBucketItem(item.text, item.completed, index);
+                });
+            }
+        } catch (error) {
+            console.error('Error loading from Firestore:', error);
+            loadFromLocalStorage();
+        }
+    } else {
+        // Load from localStorage
+        loadFromLocalStorage();
+    }
 
     updateCounter();
 }
 
 /**
- * Guarda los items en localStorage
+ * Loads items from localStorage (fallback)
  */
-function saveBucketList() {
+function loadFromLocalStorage() {
+    const items = JSON.parse(localStorage.getItem('bucketList')) || [];
+    items.forEach((item, index) => {
+        createBucketItem(item.text, item.completed, index);
+    });
+}
+
+/**
+ * Saves items to Firestore and localStorage
+ */
+async function saveBucketList() {
     const items = [];
     const listItems = bucketListEl.querySelectorAll('.bucket-item');
 
@@ -252,11 +339,24 @@ function saveBucketList() {
         });
     });
 
+    // Always save to localStorage as backup
     localStorage.setItem('bucketList', JSON.stringify(items));
+
+    // If user is signed in, save to Firestore
+    if (currentUser) {
+        try {
+            await db.collection('users').doc(currentUser.uid).set({
+                bucketList: items,
+                lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } catch (error) {
+            console.error('Error saving to Firestore:', error);
+        }
+    }
 }
 
 /**
- * Habilita la edición de un item
+ * Enables edit mode for an item
  */
 function enableEditMode(li, label) {
     const currentText = label.textContent;
@@ -266,12 +366,12 @@ function enableEditMode(li, label) {
     editInput.value = currentText;
     editInput.maxLength = 100;
 
-    // Reemplazar label con input
+    // Replace label with input
     li.replaceChild(editInput, label);
     editInput.focus();
     editInput.select();
 
-    // Función para guardar cambios
+    // Function to save changes
     const saveEdit = () => {
         const newText = editInput.value.trim();
         if (newText !== '' && newText !== currentText) {
@@ -281,12 +381,12 @@ function enableEditMode(li, label) {
         saveBucketList();
     };
 
-    // Función para cancelar edición
+    // Function to cancel edit
     const cancelEdit = () => {
         li.replaceChild(label, editInput);
     };
 
-    // Event listeners para el input
+    // Event listeners for input
     editInput.addEventListener('blur', saveEdit);
     editInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -298,7 +398,7 @@ function enableEditMode(li, label) {
 }
 
 /**
- * Crea un elemento de la bucket list
+ * Creates a bucket list item element
  */
 function createBucketItem(text, completed = false, index) {
     const li = document.createElement('li');
@@ -314,16 +414,19 @@ function createBucketItem(text, completed = false, index) {
     label.textContent = text;
     label.setAttribute('for', `item-${index}`);
 
-    // Botón de editar (lápiz)
+    // Edit button (pencil)
     const editBtn = document.createElement('button');
     editBtn.className = 'edit-btn';
-    editBtn.textContent = '✏️';
-    editBtn.title = 'Editar';
+    const editIcon = document.createElement('span');
+    editIcon.className = 'material-symbols-outlined';
+    editIcon.textContent = 'edit';
+    editBtn.appendChild(editIcon);
+    editBtn.title = 'Edit';
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';
     deleteBtn.textContent = '×';
-    deleteBtn.title = 'Eliminar';
+    deleteBtn.title = 'Delete';
 
     // Event listeners
     checkbox.addEventListener('change', () => {
@@ -331,7 +434,7 @@ function createBucketItem(text, completed = false, index) {
 
         if (checkbox.checked) {
             li.classList.add('completed');
-            // Animación de celebración si se acaba de completar
+            // Celebration animation if just completed
             if (!wasCompleted) {
                 li.classList.add('celebrate');
                 setTimeout(() => li.classList.remove('celebrate'), 500);
@@ -343,13 +446,13 @@ function createBucketItem(text, completed = false, index) {
         updateCounter();
     });
 
-    // Doble click en el label para editar
+    // Double click on label to edit
     label.addEventListener('dblclick', (e) => {
         e.preventDefault();
         enableEditMode(li, label);
     });
 
-    // Click en botón de editar
+    // Click on edit button
     editBtn.addEventListener('click', (e) => {
         e.preventDefault();
         enableEditMode(li, label);
@@ -372,7 +475,7 @@ function createBucketItem(text, completed = false, index) {
 }
 
 /**
- * Añade un nuevo item a la bucket list
+ * Adds a new item to the bucket list
  */
 function addBucketItem() {
     const text = bucketInputEl.value.trim();
@@ -389,14 +492,14 @@ function addBucketItem() {
     saveBucketList();
     updateCounter();
 
-    // Limpiar input y quitar clase expanded del botón
+    // Clear input and remove expanded class from button
     bucketInputEl.value = '';
     addBtnEl.classList.remove('expanded');
     bucketInputEl.focus();
 }
 
 /**
- * Actualiza el contador de items completados
+ * Updates the completed items counter
  */
 function updateCounter() {
     const items = bucketListEl.querySelectorAll('.bucket-item');
@@ -410,20 +513,20 @@ function updateCounter() {
 // EVENT LISTENERS
 // ============================
 
-// Botón Wake Me Up
+// Wake Me Up button
 wakeBtnEl.addEventListener('click', showQuote);
 
-// Botón añadir item
+// Add item button
 addBtnEl.addEventListener('click', addBucketItem);
 
-// Enter en el input
+// Enter on input
 bucketInputEl.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         addBucketItem();
     }
 });
 
-// Mostrar/ocultar texto "Añadir" en el botón
+// Show/hide "Add" text on button
 bucketInputEl.addEventListener('input', () => {
     if (bucketInputEl.value.trim() !== '') {
         addBtnEl.classList.add('expanded');
@@ -432,26 +535,35 @@ bucketInputEl.addEventListener('input', () => {
     }
 });
 
+// Auth buttons
+loginBtnEl.addEventListener('click', signInWithGoogle);
+logoutBtnEl.addEventListener('click', signOut);
+
+// Auth state observer
+auth.onAuthStateChanged((user) => {
+    updateAuthUI(user);
+    loadBucketList();
+});
+
 // ============================
-// INICIALIZACIÓN
+// INITIALIZATION
 // ============================
 
 /**
- * Inicializa la aplicación
+ * Initializes the application
  */
 function init() {
-    // Actualizar información del año
+    // Update year information
     updateYearInfo();
 
-    // Actualizar cada minuto
+    // Update every minute
     setInterval(updateYearInfo, 60000);
 
-    // Cargar bucket list
-    loadBucketList();
+    // Show first quote automatically
+    showQuote();
 
-    // Mostrar primera frase automáticamente (opcional)
-    // showQuote();
+    // Note: bucket list is loaded by auth state observer
 }
 
-// Iniciar cuando el DOM esté listo
+// Start when DOM is ready
 document.addEventListener('DOMContentLoaded', init);

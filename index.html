@@ -1,36 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tempus Fugit - El tiempo vuela</title>
+    <title>Tempus Fugit - Time Flies</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <h1 class="logo">TEMPUS FUGIT</h1>
+    <!-- LOGIN PAGE -->
+    <div class="login-page" id="loginPage">
+        <div class="login-container">
+            <h1 class="login-logo">TEMPUS FUGIT</h1>
+            <p class="login-subtitle">Never give up on a dream just because of the time it will take to accomplish it. The time will pass anyway</p>
+            <button id="loginBtn" class="login-btn-main">
+                Sign in with Google
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN APP (hidden until logged in) -->
+    <div class="main-app" id="mainApp" style="display: none;">
+        <!-- HEADER -->
+        <header>
+            <div class="header-top">
+                <h1 class="logo">TEMPUS FUGIT</h1>
+
+                <!-- Auth Section -->
+                <div class="auth-section" id="authSection">
+                    <div class="user-info" id="userInfo">
+                        <span class="material-symbols-outlined user-icon" id="userIcon">account_circle</span>
+                        <span id="userName" class="user-name"></span>
+                        <button id="logoutBtn" class="logout-btn">Logout</button>
+                    </div>
+                </div>
+            </div>
 
         <!-- Barra de progreso -->
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
 
-        <!-- Fecha y días restantes -->
+        <!-- Date and days remaining -->
         <div class="header-info">
             <p class="current-date" id="currentDate"></p>
             <p class="days-remaining">
-                <span id="daysRemaining">0</span> días restantes
+                <span id="daysRemaining">0</span> days remaining
             </p>
         </div>
 
-        <!-- Porcentaje -->
+        <!-- Percentage -->
         <div class="year-progress">
             <div class="percentage" id="yearPercentage">0%</div>
-            <p class="subtitle">del año <span id="currentYear">2025</span> completado</p>
+            <p class="subtitle">of year <span id="currentYear">2025</span> completed</p>
         </div>
     </header>
 
@@ -45,7 +70,7 @@
             </div>
         </section>
 
-        <!-- PARTE DERECHA: Bucket List -->
+        <!-- RIGHT SIDE: Bucket List -->
         <section class="bucket-list">
             <h2>Bucket List 2025</h2>
 
@@ -53,25 +78,36 @@
                 <input
                     type="text"
                     id="bucketInput"
-                    placeholder="¿Qué quieres lograr este año?"
+                    placeholder="What do you want to achieve this year?"
                     maxlength="100"
                 >
                 <button class="add-btn" id="addBtn">
                     <span class="btn-icon">+</span>
-                    <span class="btn-text">Añadir</span>
+                    <span class="btn-text">Add</span>
                 </button>
             </div>
 
             <div class="counter" id="counter">
-                <span id="completedCount">0</span> / <span id="totalCount">0</span> completados
+                <span id="completedCount">0</span> / <span id="totalCount">0</span> completed
             </div>
 
             <ul class="bucket-items" id="bucketList">
-                <!-- Items se agregarán dinámicamente -->
+                <!-- Items will be added dynamically -->
             </ul>
         </section>
     </main>
+    </div>
+    <!-- End Main App -->
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Main Script -->
     <script src="script.js"></script>
 </body>
 </html>
